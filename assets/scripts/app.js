@@ -5,7 +5,12 @@ locationForm.addEventListener('submit', geocode);
 function geocode(event) {
   event.preventDefault();
 
+  document.getElementById('formatted-address').innerHTML = '';
+  document.getElementById('address-components').innerHTML = '';
+  document.getElementById('geometry').innerHTML = '';
+
   const location = document.getElementById('location-input').value;
+  if (!location) return;
 
   axios
     .get('https://maps.googleapis.com/maps/api/geocode/json', {
