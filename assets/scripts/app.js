@@ -1,5 +1,12 @@
-function geocode() {
-  const location = 'Linz, Hauptplatz';
+let locationForm = document.getElementById('location-form');
+locationForm.addEventListener('submit', geocode);
+
+// get and display geocoding data
+function geocode(event) {
+  event.preventDefault();
+
+  const location = document.getElementById('location-input').value;
+
   axios
     .get('https://maps.googleapis.com/maps/api/geocode/json', {
       params: {
